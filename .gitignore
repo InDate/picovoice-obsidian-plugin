@@ -23,3 +23,9 @@ data.json
 
 # env variables
 .env
+
+# coding robot files
+.aider*
+
+# local package manager
+pnpm-lock.yaml

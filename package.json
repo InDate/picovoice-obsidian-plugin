@@ -30,6 +30,7 @@
 		"typescript": "4.7.4"
 	},
 	"dependencies": {
+		"@picovoice/pvrecorder-node": "^1.2.1",
 		"axios": "^1.3.4"
 	},
 	"release-it": {

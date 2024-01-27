@@ -4,13 +4,13 @@ import { Controls } from "src/Controls";
 import { AudioHandler } from "src/AudioHandler";
 import { WhisperSettingsTab } from "src/WhisperSettingsTab";
 import { SettingsManager, WhisperSettings } from "src/SettingsManager";
-import { NativeAudioRecorder } from "src/AudioRecorder";
+import { PicoVoiceRecorder } from "src/PicoVoiceRecorder";
 import { RecordingStatus, StatusBar } from "src/StatusBar";
-export default class Whisper extends Plugin {
+export default class WhisperPlugin extends Plugin {
 	settings: WhisperSettings;
 	settingsManager: SettingsManager;
 	timer: Timer;
-	recorder: NativeAudioRecorder;
+	recorder: PicoVoiceRecorder;
 	audioHandler: AudioHandler;
 	controls: Controls | null = null;
 	statusBar: StatusBar;
@@ -30,7 +30,7 @@ export default class Whisper extends Plugin {
 
 		this.timer = new Timer();
 		this.audioHandler = new AudioHandler(this);
-		this.recorder = new NativeAudioRecorder();
+		this.recorder = new PicoVoiceRecorder(this.settings.accessKey);
 
 		this.statusBar = new StatusBar(this);
 
@@ -55,15 +55,7 @@ export default class Whisper extends Plugin {
 					await this.recorder.startRecording();
 				} else {
 					this.statusBar.updateStatus(RecordingStatus.Processing);
-					const audioBlob = await this.recorder.stopRecording();
-					const extension = this.recorder
-						.getMimeType()
-						?.split("/")[1];
-					const fileName = `${new Date()
-						.toISOString()
-						.replace(/[:.]/g, "-")}.${extension}`;
-					// Use audioBlob to send or save the recorded audio as needed
-					await this.audioHandler.sendAudioData(audioBlob, fileName);
+					await this.recorder.stopRecording();
 					this.statusBar.updateStatus(RecordingStatus.Idle);
 				}
 			},

@@ -1,25 +1,29 @@
 import { Plugin } from "obsidian";
 
-export interface WhisperSettings {
-	apiKey: string;
-	apiUrl: string;
-	model: string;
-	language: string;
+export interface PicovoiceSettings {
+	// Replace with PicoVoiceLibrary settings
+	accessKey: string;
+	modelPath: string;
+	contextPath: string;
 	saveAudioFile: boolean;
 	saveAudioFilePath: string;
 	createNewFileAfterRecording: boolean;
 	createNewFileAfterRecordingPath: string;
+	endpointDurationSec: number,
+	enableAutomaticPunctuation: boolean
 }
 
-export const DEFAULT_SETTINGS: WhisperSettings = {
-	apiKey: "",
-	apiUrl: "https://api.openai.com/v1/audio/transcriptions",
-	model: "whisper-1",
-	language: "en",
-	saveAudioFile: true,
+export const DEFAULT_SETTINGS: PicovoiceSettings = {
+	// Default settings for PicoVoiceLibrary
+	accessKey: "AccessKey obtain from the Picovoice Console (https://console.picovoice.ai/)",
+	modelPath: "path/to/picovoice/model.pv",
+	contextPath: "path/to/picovoice/context.rhn",
+	saveAudioFile: false,
 	saveAudioFilePath: "",
-	createNewFileAfterRecording: true,
+	createNewFileAfterRecording: false,
 	createNewFileAfterRecordingPath: "",
+	endpointDurationSec: 0.4,
+	enableAutomaticPunctuation: true
 };
 
 export class SettingsManager {
@@ -29,7 +33,7 @@ export class SettingsManager {
 		this.plugin = plugin;
 	}
 
-	async loadSettings(): Promise<WhisperSettings> {
+	async loadSettings(): Promise<PicovoiceSettings> {
 		return Object.assign(
 			{},
 			DEFAULT_SETTINGS,
@@ -37,7 +41,7 @@ export class SettingsManager {
 		);
 	}
 
-	async saveSettings(settings: WhisperSettings): Promise<void> {
+	async saveSettings(settings: PicovoiceSettings): Promise<void> {
 		await this.plugin.saveData(settings);
 	}
 }
