@@ -5,6 +5,7 @@ import { PvRecorder } from "@picovoice/pvrecorder-node";
 
 export interface AudioRecorder {
 	startRecording(): AsyncGenerator<string>;
+	getRecordingState(): string;
 	stopRecording(): Promise<void>;
 }
 
@@ -68,6 +69,16 @@ export class PicoVoiceRecorder implements AudioRecorder {
 
   async stopRecording(): Promise<void> {
 	this.recording = false;
+  }
+
+  public getRecordingState(): string {
+    if (!this.recorder) {
+      return "inactive";
+    } else if (this.recording) {
+      return "recording";
+    } else {
+      return "stopped";
+    }
   }
 
   private async cleanup(): Promise<void> {

@@ -1,15 +1,15 @@
-import Whisper from "main";
+import Picovoice from "main";
 import { ButtonComponent, Modal } from "obsidian";
 import { RecordingStatus } from "./StatusBar";
 
 export class Controls extends Modal {
-	private plugin: Whisper;
+	private plugin: Picovoice;
 	private startButton: ButtonComponent;
 	private pauseButton: ButtonComponent;
 	private stopButton: ButtonComponent;
 	private timerDisplay: HTMLElement;
 
-	constructor(plugin: Whisper) {
+	constructor(plugin: Picovoice) {
 		super(plugin.app);
 		this.plugin = plugin;
 		this.containerEl.addClass("recording-controls");
@@ -36,14 +36,6 @@ export class Controls extends Modal {
 			.onClick(this.startRecording.bind(this))
 			.buttonEl.addClass("button-component");
 
-		// Add pause button
-		this.pauseButton = new ButtonComponent(buttonGroupEl);
-		this.pauseButton
-			.setIcon("pause")
-			.setButtonText(" Pause")
-			.onClick(this.pauseRecording.bind(this))
-			.buttonEl.addClass("button-component");
-
 		// Add stop button
 		this.stopButton = new ButtonComponent(buttonGroupEl);
 		this.stopButton
@@ -61,25 +53,12 @@ export class Controls extends Modal {
 		this.resetGUI();
 	}
 
-	async pauseRecording() {
-		console.log("pausing recording...");
-		await this.plugin.recorder.pauseRecording();
-		this.plugin.timer.pause();
-		this.resetGUI();
-	}
-
 	async stopRecording() {
 		console.log("stopping recording...");
 		this.plugin.statusBar.updateStatus(RecordingStatus.Processing);
 		const blob = await this.plugin.recorder.stopRecording();
 		this.plugin.timer.reset();
 		this.resetGUI();
-
-		const extension = this.plugin.recorder.getMimeType()?.split("/")[1];
-		const fileName = `${new Date()
-			.toISOString()
-			.replace(/[:.]/g, "-")}.${extension}`;
-		await this.plugin.audioHandler.sendAudioData(blob, fileName);
 		this.plugin.statusBar.updateStatus(RecordingStatus.Idle);
 		this.close();
 	}
@@ -92,13 +71,13 @@ export class Controls extends Modal {
 		const recorderState = this.plugin.recorder.getRecordingState();
 
 		this.startButton.setDisabled(
-			recorderState === "recording" || recorderState === "paused"
+			recorderState === "recording" || recorderState === "stopped"
 		);
 		this.pauseButton.setDisabled(recorderState === "inactive");
 		this.stopButton.setDisabled(recorderState === "inactive");
 
 		this.pauseButton.setButtonText(
-			recorderState === "paused" ? " Resume" : " Pause"
+			recorderState === "stopped" ? " Resume" : " Pause"
 		);
 	}
 }
