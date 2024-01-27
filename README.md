@@ -1,11 +1,13 @@
-# Speech-to-text in Obsidian using OpenAI Whisper 🗣️📝
+# Speech-to-text in Obsidian using Pico Voice 🗣️📝
 
-Obsidian Whisper is a plugin that effortlessly turns your speech into written notes. Just speak your mind, and let [Whisper](https://openai.com/research/whisper) from OpenAI do the rest!
+Obsidian PicoVoice is a plugin that turns your speech into written notes in almost real time. Just speak your mind, and let [PicoVoice](https://picovoice.ai/docs/cheetah/) do the rest. 
+
+## Why did I assemble this?
+There is empirical evidence of a phenomenon called **conjoint retention** or **dual coding**, meaning the combination of verbal and non-verbal representations to faciliate increased retention of information. By saying words and seeing the words appear in almost real time it is suggested that this will help retain understanding and develop new insights. 
 
 ## 🚀 Getting Started
-
 1. This plugin can be installed from "Community Plugins" inside Obsidian.
-2. For this plugin to work, you will need to provide your OpenAI API key. See the Settings section of this README file for more information.
+2. For this plugin to work, you will need to provide your PicoVoice key. See the Settings section of this README file for more information.
 
 ## 🎯 How to Use
 
@@ -15,28 +17,17 @@ Click on the ribbon button to open the recording controls interface.
 
 ### Record Audio
 
-Use the "Start" button to begin recording. You can pause and resume the recording using the "Pause/Resume" button. Click the "Stop" button once you're done. After stopping the recording, the plugin will automatically transcribe the audio and create a new note with the transcribed content and linked audio file in the specified folder.
+Use the "Start" button to begin recording and see the transcript generate as you talk. Click the "Stop" button once you're done. 
 
 > You can quickly start or stop recording using the `Alt + Q` shortcut.
 
-### Upload Existing Audio File
-
-You can also transcribe an existing audio file:
-
--   Open the command palette with `Ctrl/Cmd + P`.
--   Search for "Upload Audio File" and select it.
--   A file dialog will appear. Choose the audio file you want to transcribe.
--   The plugin will transcribe the selected file and create a new note with the content and linked audio file in the specified folder.
-
 ### Command Palette for Quick Actions
 
-Both "Start/Stop recording" and "Upload Audio File" actions can also be accessed quickly through the command palette.
-
-> For further explanation of using this plugin, check out the article ["Speech-to-text in Obsidian using OpenAI Whisper Service"](https://tfthacker.medium.com/speech-to-text-in-obsidian-using-openai-whisper-service-7b2843bf8d64) by [TfT Hacker](https://twitter.com/tfthacker)
+"Start/Stop recording" action can be accessed through the command palette.
 
 ## ⚙️ Settings
 
--   API Key: Input your OpenAI API key to unlock the advanced transcription capabilities of the Whisper API. You can obtain a key from OpenAI at this [link](https://platform.openai.com/overview). If you are not familiar with the concept of an API key, you can learn more about this at this [link](https://tfthacker.medium.com/how-to-get-your-own-api-key-for-using-openai-chatgpt-in-obsidian-41b7dd71f8d3).
+-   Access Key: 
 
 -   API URL: Specify the endpoint that will be used to make requests to the Whisper API. This should not be changed unless you have a specific reason to use a different endpoint.
 
@@ -58,8 +49,7 @@ We welcome and appreciate contributions, issue reports, and feature requests fro
 
 ## 💬 Whisper API
 
--   For additional information, including limitations and pricing related to using the Whisper API, check out the [OpenAI Whisper FAQ](https://help.openai.com/en/articles/7031512-whisper-api-faq)
--   For a high-level overview of the Whisper API, check out this information from [OpenAI](https://openai.com/research/whisper)
+-   For additional information, including limitations and pricing related to using the Pico API, check out the [Pico Voice Cheetah](https://picovoice.ai/docs/cheetah/)
 
 ## ⚒️ Manual Installation
 
@@ -72,12 +62,6 @@ If you want to install this plugin manually, use the following steps:
 
 ## 🤩 Say Thank You
 
-Are you finding value in this plugin? Great! You can fuel my coding sessions and share your appreciation by buying me a coffee [here](https://ko-fi.com/nikdanilov).
-
-Help others discover the magic of the Obsidian Whisper Plugin! I'd be thrilled if you could share your experiences on Twitter, Reddit, or your preferred social media platform!
-
-You can find me on Twitter [@nikdanilov\_](https://twitter.com/nikdanilov_).
-
-[<img style="float:left" src="https://user-images.githubusercontent.com/14358394/115450238-f39e8100-a21b-11eb-89d0-fa4b82cdbce8.png" width="200">](https://ko-fi.com/nikdanilov)
+Are you finding value in this plugin? You can go [here](https://ko-fi.com/indate) if you'd like to fund future projects.
 
 ---
