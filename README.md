@@ -1,4 +1,4 @@
-# Speech-to-text in Obsidian using Pico Voice 🗣️📝
+# Speech-to-text in Obsidian using PicoVoice 🗣️📝
 
 Obsidian PicoVoice is a plugin that turns your speech into written notes in almost real time. Just speak your mind, and let [PicoVoice](https://picovoice.ai/docs/cheetah/) do the rest. 
 
@@ -47,21 +47,16 @@ Use the "Start" button to begin recording and see the transcript generate as you
 
 We welcome and appreciate contributions, issue reports, and feature requests from the community! Feel free to visit the [Issues](https://github.com/nikdanilov/whisper-obsidian-plugin/issues) page to share your thoughts and suggestions.
 
-## 💬 Whisper API
+## 💬 Picovoice API
 
 -   For additional information, including limitations and pricing related to using the Pico API, check out the [Pico Voice Cheetah](https://picovoice.ai/docs/cheetah/)
-
-## ⚒️ Manual Installation
-
-If you want to install this plugin manually, use the following steps:
-
-1. Download `manifest.json`, `main.js`, `styles.css` from the [GitHub repository](https://github.com/nikdanilov/whisper-obsidian-plugin/releases) into the `plugins/whisper` folder within your Obsidian vault.
-2. Click on `Reload plugins` button inside `Settings > Community plugins`.
-3. Locate the "Whisper" plugin and enable it.
-4. In the plugin settings include your OpenAI API key.
 
 ## 🤩 Say Thank You
 
 Are you finding value in this plugin? You can go [here](https://ko-fi.com/indate) if you'd like to fund future projects.
+
+## Acknowledgements
+
+This plugin was mostly built on top of [Whisper Obsidian Plugin](https://github.com/nikdanilov/whisper-obsidian-plugin). A massive thank you to them.
 
 ---
